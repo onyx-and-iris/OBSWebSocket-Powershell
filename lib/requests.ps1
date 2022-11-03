@@ -485,13 +485,11 @@ class Request {
         $payload = @{ sourceName = $name }
         return $this.Call("GetSourceFilterList", $payload)
     }
-  
 
     [object] GetSourceFilterDefaultSettings($kind) {
         $payload = @{ filterKind = $kind }
         return $this.Call("GetSourceFilterDefaultSettings", $payload)
     }
-  
 
     [void] CreateSourceFilter($sourceName, $filterName, $filterKind, $filterSettings = $null) {
         $payload = @{
@@ -510,7 +508,6 @@ class Request {
         }
         $this.Call("RemoveSourceFilter", $payload)
     }
-  
 
     [void] SetSourceFilterName($sourceName, $oldFilterName, $newFilterName) {
         $payload = @{
@@ -520,7 +517,6 @@ class Request {
         }
         $this.Call("SetSourceFilterName", $payload)
     }
-  
 
     [object] GetSourceFilter($sourceName, $filterName) {
         $payload = @{ 
@@ -529,7 +525,6 @@ class Request {
         }
         return $this.Call("GetSourceFilter", $payload)
     }
-  
 
     [void] SetSourceFilterIndex($sourceName, $filterName, $filterIndex) {
         $payload = @{
@@ -627,7 +622,6 @@ class Request {
         }
         return $this.Call("GetSceneItemEnabled", $payload)
     }
-  
 
     [void] SetSceneItemEnabled($sceneName, $itemId, $enabled) {
         $payload = @{
@@ -645,7 +639,6 @@ class Request {
         }
         return $this.Call("GetSceneItemLocked", $payload)
     }
-  
 
     [void] SetSceneItemLocked($sceneName, $itemId, $locked) {
         $payload = @{
@@ -660,7 +653,6 @@ class Request {
         $payload = @{ sceneName = $sceneName, $sceneItemId = $itemId }
         return $this.Call("GetSceneItemIndex", $payload)
     }
-  
 
     [void] SetSceneItemIndex($sceneName, $itemId, $itemIndex) {
         $payload = @{
@@ -687,12 +679,10 @@ class Request {
         }
         $this.Call("SetSceneItemBlMode", $payload)
     }
-  
 
     [object] GetVirtualCamStatus() {
         return $this.Call("GetVirtualCamStatus")
     }
-  
 
     [object] ToggleVirtualCam() {
         return $this.Call("ToggleVirtualCam")
@@ -701,7 +691,6 @@ class Request {
     [void] StartVirtualCam() {
         $this.Call("StartVirtualCam")
     }
-  
 
     [void] StopVirtualCam() {
         $this.Call("StopVirtualCam")
@@ -730,24 +719,20 @@ class Request {
     [object] GetLastReplayBufferReplay() {
         return $this.Call("GetLastReplayBufferReplay")
     }
-  
 
     [object] GetOutputList() {
         return $this.Call("GetOutputList")
     }
-  
 
     [object] GetOutputStatus($name) {
         $payload = @{ outputName = $name }
         return $this.Call("GetOutputStatus", $payload)
     }
-  
 
     [object] ToggleOutput($name) {
         $payload = @{ outputName = $name }
         return $this.Call("ToggleOutput", $payload)
     }
-  
 
     [void] StartOutput($name) {
         $payload = @{ outputName = $name }
@@ -763,7 +748,6 @@ class Request {
         $payload = @{ outputName = $name }
         return $this.Call("GetOutputSettings", $payload)
     }
-  
 
     [void] SetOutputSettings($name, $settings) {
         $payload = @{ 
@@ -780,8 +764,6 @@ class Request {
     [object] ToggleStream() {
         return $this.Call("ToggleStream")
     }
-  
-
     [void] StartStream() {
         $this.Call("StartStream")
     }
@@ -797,8 +779,6 @@ class Request {
     [object] GetRecordStatus() {
         return $this.Call("GetRecordStatus")
     }
-  
-
     [void] ToggleRecord() {
         $this.Call("ToggleRecord")
     }
@@ -810,8 +790,6 @@ class Request {
     [object] StopRecord() {
         return $this.Call("StopRecord")
     }
-  
-
     [void] ToggleRecordPause() {
         $this.Call("ToggleRecordPause")
     }
@@ -828,7 +806,6 @@ class Request {
         $payload = @{ inputName = $name }
         return $this.Call("GetMediaInputStatus", $payload)
     }
-  
 
     [void] SetMediaInputCursor($name, $cursor) {
         $payload = @{ inputName = $name, $mediaCursor = $cursor }
@@ -854,7 +831,6 @@ class Request {
     [object] GetStudioModeEnabled() {
         return $this.Call("GetStudioModeEnabled")
     }
-  
 
     [void] SetStudioModeEnabled($enabled) {
         $payload = @{ studioModeEnabled = $enabled }

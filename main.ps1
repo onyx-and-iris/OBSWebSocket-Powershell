@@ -1,8 +1,7 @@
 Import-Module .\lib\OBSWebSocket.psm1
 
 function CurrentProgramSceneChanged($data) {
-    $resp = $r_client.getCurrentProgramScene()
-    "Switched to scene: " + $resp.currentProgramSceneName | Write-Host
+    "Switched to scene: " + $data.sceneName | Write-Host
 }
 
 function ConnFromFile {
