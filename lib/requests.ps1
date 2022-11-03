@@ -64,6 +64,14 @@ class Request {
         return $this.Call("GetVersion")
     }
 
+    [object] GetStats() {
+        return $this.Call("GetStats")
+    }
+
+    [void] BroadcastCustomEvent($data) {
+        $this.Call("BroadcastCustomEvent", $data)
+    }
+
     [object] GetSceneList() {
         return $this.Call("GetSceneList")
     }

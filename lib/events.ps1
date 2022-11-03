@@ -35,13 +35,13 @@ class Event {
         if ($callbacks[0] -is [array]) { 
             $callbacks | ForEach-Object {
                 $name, $fn = $_
-                $name + "registered to callbacks" | Write-Debug
+                $name + " registered to callbacks" | Write-Debug
                 $this.callbacks[$name] = $fn        
             }
         }
         else { 
             $name, $fn = $callbacks
-            $name + "registered to callbacks" | Write-Debug
+            $name + " registered to callbacks" | Write-Debug
             $this.callbacks[$name] = $fn 
         }
         $this.Listen()   
