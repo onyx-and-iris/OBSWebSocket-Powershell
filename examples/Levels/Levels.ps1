@@ -1,9 +1,31 @@
 Import-Module OBSWebSocket
 
+enum Channel {
+    LEFT = 0
+    RIGHT = 1
+}
+
+enum LevelTypes {
+    VU = 0
+    POSTFADER = 1
+    PREFADER = 2
+}
+
+function Convert($x) {
+    if ($x -gt 0) { [math]::Round(20 * [Math]::Log10($x), 1) } else { return -200.0 }
+}
+
 function InputVolumeMeters($data) {
     $data.inputs | ForEach-Object {
         if ($_.inputName -eq "Desktop Audio") {
-            if ($_.inputLevelsMul) { Write-Host $_.inputLevelsMul }
+            if ($_.inputLevelsMul) {
+                $left = $_.inputLevelsMul[[Channel]::LEFT]
+                $right = $_.inputLevelsMul[[Channel]::RIGHT]
+                @(
+                    "L: " + $(Convert($left[[LevelTypes]::POSTFADER])), 
+                    "R: " + $(Convert($right[[LevelTypes]::POSTFADER]))
+                ) -Join " " | Write-host
+            }
         }
     }
 }
