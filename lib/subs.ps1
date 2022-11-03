@@ -18,7 +18,7 @@
     SCENEITEMTRANSFORMCHANGED = 1 -shl 19
 }
 
-Function Get-LowVolume {
+Function Get-OBSLowVolume {
     return [System.Int32]$(
         [int][Subs]::GENERAL `
             -bor [int][Subs]::CONFIG `
@@ -34,7 +34,7 @@ Function Get-LowVolume {
     )
 }
 
-Function Get-HighVolume {
+Function Get-OBSHighVolume {
     return [System.Int32]$(
         [int][Subs]::INPUTVOLUMEMETERS `
             -bor [int][Subs]::INPUTACTIVESTATECHANGED `
@@ -43,10 +43,10 @@ Function Get-HighVolume {
     )
 }
 
-Function Get-All {
+Function Get-OBSAll {
     return [System.Int32]$($(LowVolume) -bor $(HighVolume))
 }
 
-Function Get-Subs {
+Function Get-OBSSubs {
     return [Subs]
 }

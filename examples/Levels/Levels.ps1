@@ -22,13 +22,13 @@ function ConnFromFile {
 function main {
     try {
         $conn = ConnFromFile
-        $r_client = Get-Request -hostname $conn.hostname -port $conn.port -pass $conn.password
+        $r_client = Get-OBSRequest -hostname $conn.hostname -port $conn.port -pass $conn.password
         $resp = $r_client.getVersion()
         Write-Host "obs version:", $resp.obsVersion
         Write-Host "websocket version:", $resp.obsWebSocketVersion
 
-        $subs = $($(Get-LowVolume) -bor $(Get-Subs)::INPUTVOLUMEMETERS)
-        $e_client = Get-Event -hostname $conn.hostname -port $conn.port -pass $conn.password -subs $subs
+        $subs = $($(Get-OBSLowVolume) -bor $(Get-OBSSubs)::INPUTVOLUMEMETERS)
+        $e_client = Get-OBSEvent -hostname $conn.hostname -port $conn.port -pass $conn.password -subs $subs
         $callbacks = @(
             @("InputMuteStateChanged", ${function:InputMuteStateChanged}),
             @("InputVolumeMeters", ${function:InputVolumeMeters})

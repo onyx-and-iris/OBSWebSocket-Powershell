@@ -8,7 +8,7 @@ function ConnFromFile {
 function main {
     try {
         $conn = ConnFromFile
-        $r_client = Get-Request -hostname $conn.hostname -port $conn.port -pass $conn.password
+        $r_client = Get-OBSRequest -hostname $conn.hostname -port $conn.port -pass $conn.password
         $resp = $r_client.GetSceneList()
         $resp.scenes | Sort-Object { (--$script:i) } | ForEach-Object {
             "Switching to scene " + $_.sceneName | Write-Host

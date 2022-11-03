@@ -13,12 +13,12 @@ function ConnFromFile {
 function main {
     try {
         $conn = ConnFromFile
-        $r_client = Get-Request -hostname $conn.hostname -port $conn.port -pass $conn.password
+        $r_client = Get-OBSRequest -hostname $conn.hostname -port $conn.port -pass $conn.password
         $resp = $r_client.GetVersion()
         Write-Host "obs version:", $resp.obsVersion
         Write-Host "websocket version:", $resp.obsWebSocketVersion
 
-        $e_client = Get-Event -hostname $conn.hostname -port $conn.port -pass $conn.password
+        $e_client = Get-OBSEvent -hostname $conn.hostname -port $conn.port -pass $conn.password
         $callbacks = @("CurrentProgramSceneChanged", ${function:CurrentProgramSceneChanged})
         $e_client.Register($callbacks)
     }
