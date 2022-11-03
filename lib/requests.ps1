@@ -13,7 +13,6 @@ class OBSWebSocketError : Exception {
     }
 }
 
-
 class Request {
     [object]$base
 
@@ -83,27 +82,25 @@ class Request {
 
     [void] TriggerHotkeyByKeySequence($keyId, $pressShift, $pressCtrl, $pressAlt, $pressCmd) {
         $payload = @{
-            keyId = $keyId
+            keyId        = $keyId
             keyModifiers = @{
-                shift = $pressShift
+                shift   = $pressShift
                 control = $pressCtrl
-                alt = $pressAlt
-                cmd = $pressCmd
-          }
+                alt     = $pressAlt
+                cmd     = $pressCmd
+            }
         }
         $this.Call("TriggerHotkeyByKeySequence", $payload)        
     }
 
     [void] Sleep($sleepMillis, $sleepFrames) {
-        $payload = @{
-            sleepMillis = $sleepMillis
-        }
+        $payload = @{ sleepMillis = $sleepMillis }
         $this.Call("Sleep", $payload)
     }
 
     [object] GetPersistentData($realm, $slotName) {
         $payload = @{ 
-            realm = $realm
+            realm    = $realm
             slotName = $slotName
         }
         return $this.Call("GetPersistentData", $payload)
@@ -111,8 +108,8 @@ class Request {
 
     [void] SetPersistentData($realm, $slotName, $slotValue) {
         $payload = @{ 
-            realm = $realm
-            slotName = $slotName
+            realm     = $realm
+            slotName  = $slotName
             slotValue = $slotValue
         }
         $this.Call("SetPersistentData", $payload)
@@ -154,7 +151,7 @@ class Request {
     [object] GetProfileParameter($category, $name) {
         $payload = @{ 
             parameterCategory = $category
-            parameterName = $name 
+            parameterName     = $name 
         }
         return $this.Call("GetProfileParameter", $payload)
     }
@@ -162,8 +159,8 @@ class Request {
     [void] SetProfileParameter($category, $name, $value) {
         $payload = @{
             parameterCategory = $category
-            parameterName = $name
-            parameterValue = $value
+            parameterName     = $name
+            parameterValue    = $value
         }
         $this.Call("SetProfileParameter", $payload)        
     }
@@ -174,12 +171,12 @@ class Request {
 
     [void] SetVideoSettings($numerator, $denominator, $baseWidth, $baseHeight, $outWidth, $outHeight) {
         $payload = @{
-            fpsNumerator = $numerator
+            fpsNumerator   = $numerator
             fpsDenominator = $denominator
-            baseWidth = $baseWidth
-            baseHeight = $baseHeight
-            outputWidth = $outWidth
-            outputHeight = $outHeight
+            baseWidth      = $baseWidth
+            baseHeight     = $baseHeight
+            outputWidth    = $outWidth
+            outputHeight   = $outHeight
         }
         $this.Call("SetVideoSettings", $payload)        
     }
@@ -190,7 +187,7 @@ class Request {
 
     [void] SetStreamServiceSettings($ssType, $ssSettings) {
         $payload = @{
-            streamServiceType = $ssType
+            streamServiceType     = $ssType
             streamServiceSettings = $ssSettings
         }
         $this.Call("SetStreamServiceSettings", $payload)        
@@ -207,10 +204,10 @@ class Request {
 
     [object] GetSourceScreenshot($name, $imgFormat, $width, $height, $quality) {
         $payload = @{
-            sourceName = $name
-            imageFormat = $imgFormat
-            imageWidth = $width
-            imageHeight = $height
+            sourceName              = $name
+            imageFormat             = $imgFormat
+            imageWidth              = $width
+            imageHeight             = $height
             imageCompressionQuality = $quality
         }
         return $this.Call("GetSourceScreenshot", $payload)        
@@ -218,11 +215,11 @@ class Request {
 
     [object] SaveSourceScreenshot($name, $imgFormat, $filePath, $width, $height, $quality) {
         $payload = @{
-            sourceName = $name
-            imageFormat = $imgFormat
-            imageFilePath = $filePath
-            imageWidth = $width
-            imageHeight = $height
+            sourceName              = $name
+            imageFormat             = $imgFormat
+            imageFilePath           = $filePath
+            imageWidth              = $width
+            imageHeight             = $height
             imageCompressionQuality = $quality
         }
         return $this.Call("SaveSourceScreenshot", $payload)      
@@ -261,7 +258,7 @@ class Request {
 
     [void] SetSceneName($oldName, $newName) {
         $payload = @{ 
-            sceneName = $oldName
+            sceneName    = $oldName
             newSceneName = $newName 
         }
         $this.Call("SetSceneName", $payload)
@@ -274,8 +271,8 @@ class Request {
 
     [void] SetSceneSceneTransitionOverride($sceneName, $trName, $trDuration) {
         $payload = @{
-            sceneName = $sceneName
-            transitionName = $trName
+            sceneName          = $sceneName
+            transitionName     = $trName
             transitionDuration = $trDuration
         }
         $this.Call("SetSceneSceneTransitionOverride", $payload)        
@@ -297,11 +294,11 @@ class Request {
 
     [object] CreateInput($sceneName, $inputName, $inputKind, $inputSettings, $sceneItemEnabled) {
         $payload = @{
-          sceneName = $sceneName
-          inputName = $inputName
-          inputKind = $inputKind
-          inputSettings = $inputSettings
-          sceneItemEnabled = $sceneItemEnabled
+            sceneName        = $sceneName
+            inputName        = $inputName
+            inputKind        = $inputKind
+            inputSettings    = $inputSettings
+            sceneItemEnabled = $sceneItemEnabled
         }
         return $this.Call("CreateInput", $payload)        
     }
@@ -313,7 +310,7 @@ class Request {
 
     [void] SetInputName($oldName, $newName) {
         $payload = @{ 
-            inputName = $oldName
+            inputName    = $oldName
             newInputName = $newName 
         }
         $this.Call("SetInputName", $payload)
@@ -331,9 +328,9 @@ class Request {
 
     [void] SetInputSettings($name, $settings, $overlay) {
         $payload = @{ 
-            inputName = $name
+            inputName     = $name
             inputSettings = $settings
-            overlay = $overlay 
+            overlay       = $overlay 
         }
         $this.Call("SetInputSettings", $payload)
     }
@@ -345,7 +342,7 @@ class Request {
 
     [void] SetInputMute($name, $muted) {
         $payload = @{ 
-            inputName = $name
+            inputName  = $name
             inputMuted = $muted
         }
         $this.Call("SetInputMute", $payload)
@@ -362,10 +359,10 @@ class Request {
     }
 
     [void] SetInputVolume($name, $volMul, $volDb) {
-        $payload = {
-            inputName = $name
+        $payload = @{
+            inputName      = $name
             inputVolumeMul = $volMul
-            inputVolumeDb = $volDb
+            inputVolumeDb  = $volDb
         }
         $this.Call("SetInputVolume", $payload)        
     }
@@ -377,7 +374,7 @@ class Request {
 
     [void] SetInputAudioBalance($name, $balance) {
         $payload = @{ 
-            inputName = $name
+            inputName         = $name
             inputAudioBalance = $balance
         }
         $this.Call("SetInputAudioBalance", $payload)
@@ -390,7 +387,7 @@ class Request {
 
     [void] SetInputAudioSyncOffset($name, $offset) {
         $payload = @{ 
-            inputName = $name
+            inputName            = $name
             inputAudioSyncOffset = $offset
         }
         $this.Call("SetInputAudioSyncOffset", $payload)
@@ -403,7 +400,7 @@ class Request {
 
     [void] SetInputAudioMonitorType($name, $monType) {
         $payload = @{ 
-            inputName = $name
+            inputName   = $name
             monitorType = $monType 
         }
         $this.Call("SetInputAudioMonitorType", $payload)
@@ -416,7 +413,7 @@ class Request {
 
     [void] SetInputAudioTracks($name, $track) {
         $payload = @{ 
-            inputName = $name
+            inputName        = $name
             inputAudioTracks = $track
         }
         $this.Call("SetInputAudioTracks", $payload)
@@ -424,7 +421,7 @@ class Request {
 
     [object] GetInputPropertiesListPropertyItems($inputName, $propName) {
         $payload = @{ 
-            inputName = $inputName
+            inputName    = $inputName
             propertyName = $propName
         }
         return $this.Call("GetInputPropertiesListPropertyItems", $payload)
@@ -432,7 +429,7 @@ class Request {
 
     [void] PressInputPropertiesButton($inputName, $propName) {
         $payload = @{ 
-            inputName = $inputName
+            inputName    = $inputName
             propertyName = $propName
         }
         $this.Call("PressInputPropertiesButton", $payload)
@@ -456,14 +453,14 @@ class Request {
     }
 
     [void] SetCurrentSceneTransitionDuration($duration) {
-        payload = @{ transitionDuration = $duration  }
+        payload = @{ transitionDuration = $duration }
         $this.Call("SetCurrentSceneTransitionDuration")
     }
 
     [void] SetCurrentSceneTransitionSettings($settings, $overlay = $null) {
         payload = @{ 
             transitionSettings = $settings
-            overlay = $overlay
+            overlay            = $overlay
         }
         $this.Call("SetCurrentSceneTransitionSettings")
     }
@@ -479,9 +476,408 @@ class Request {
     [void] SetTBarPosition($pos, $release = $null) {
         $payload = @{ 
             position = $pos 
-            release = $release 
+            release  = $release 
         }
         $this.Call("SetTBarPosition", $payload)        
+    }
+
+    [object] GetSourceFilterList($name) {
+        $payload = @{ sourceName = $name }
+        return $this.Call("GetSourceFilterList", $payload)
+    }
+  
+
+    [object] GetSourceFilterDefaultSettings($kind) {
+        $payload = @{ filterKind = $kind }
+        return $this.Call("GetSourceFilterDefaultSettings", $payload)
+    }
+  
+
+    [void] CreateSourceFilter($sourceName, $filterName, $filterKind, $filterSettings = $null) {
+        $payload = @{
+            sourceName     = $sourceName
+            filterName     = $filterName
+            filterKind     = $filterKind
+            filterSettings = $filterSettings
+        }
+        $this.Call("CreateSourceFilter", $payload)
+    }
+
+    [void] RemoveSourceFilter($sourceName, $filterName) {
+        $payload = @{ 
+            sourceName = $sourceName
+            filterName = $filterName 
+        }
+        $this.Call("RemoveSourceFilter", $payload)
+    }
+  
+
+    [void] SetSourceFilterName($sourceName, $oldFilterName, $newFilterName) {
+        $payload = @{
+            sourceName    = $sourceName
+            filterName    = $oldFilterName
+            newFilterName = $newFilterName
+        }
+        $this.Call("SetSourceFilterName", $payload)
+    }
+  
+
+    [object] GetSourceFilter($sourceName, $filterName) {
+        $payload = @{ 
+            sourceName = $sourceName
+            filterName = $filterName 
+        }
+        return $this.Call("GetSourceFilter", $payload)
+    }
+  
+
+    [void] SetSourceFilterIndex($sourceName, $filterName, $filterIndex) {
+        $payload = @{
+            sourceName  = $sourceName
+            filterName  = $filterName
+            filterIndex = $filterIndex
+        }
+        $this.Call("SetSourceFilterIndex", $payload)
+    }
+
+    [void] SetSourceFilterSettings($sourceName, $filterName, $settings, $overlay = $null) {
+        $payload = @{
+            sourceName     = $sourceName
+            filterName     = $filterName
+            filterSettings = $settings
+            overlay        = $overlay
+        }
+        $this.Call("SetSourceFilterSettings", $payload)
+    }
+  
+    [void] SetSourceFilterEnabled($sourceName, $filterName, $enabled) {
+        $payload = @{
+            sourceName    = $sourceName
+            filterName    = $filterName
+            filterEnabled = $enabled
+        }
+        $this.Call("SetSourceFilterEnabled", $payload)
+    }
+  
+    [object] GetSceneItemList($name) {
+        $payload = @{ sceneName = $name }
+        return $this.Call("GetSceneItemList", $payload)
+    }
+
+    [object] GetGroupSceneItemList($name) {
+        $payload = @{ sceneName = $name }
+        return $this.Call("GetGroupSceneItemList", $payload)
+    }
+
+    [object] GetSceneItemId($sceneName, $sourceName, $offset = $null) {
+        $payload = @{
+            sceneName    = $sceneName
+            sourceName   = $sourceName
+            searchOffset = $offset
+        }
+        return $this.Call("GetSceneItemId", $payload)
+    }
+  
+    [object] CreateSceneItem($sceneName, $sourceName, $enabled = $null) {
+        $payload = @{
+            sceneName        = $sceneName
+            sourceName       = $sourceName
+            sceneItemEnabled = $enabled
+        }
+        return $this.Call("CreateSceneItem", $payload)
+    }
+
+    [void] RemoveSceneItem($sceneName, $itemId) {
+        $payload = @{ 
+            sceneName   = $sceneName
+            sceneItemId = $itemId 
+        }
+        $this.Call("RemoveSceneItem", $payload)
+    }
+  
+    [object] DuplicateSceneItem($sceneName, $itemId, $destSceneName = $null) {
+        $payload = @{
+            sceneName            = $sceneName
+            sceneItemId          = $itemId
+            destinationSceneName = $destSceneName
+        }
+        return $this.Call("DuplicateSceneItem", $payload)
+    }
+
+    [object] GetSceneItemTransform($sceneName, $itemId) {
+        $payload = @{ 
+            sceneName   = $sceneName
+            sceneItemId = $itemId 
+        }
+        return $this.Call("GetSceneItemTransform", $payload)
+    }
+  
+    [void] SetSceneItemTransform($sceneName, $itemId, $transform) {
+        $payload = @{
+            sceneName          = $sceneName
+            sceneItemId        = $itemId
+            sceneItemTransform = $transform
+        }
+        $this.Call("SetSceneItemTransform", $payload)
+    }
+  
+    [object] GetSceneItemEnabled($sceneName, $itemId) {
+        $payload = @{ sceneName = $sceneName
+            sceneItemId         = $itemId 
+        }
+        return $this.Call("GetSceneItemEnabled", $payload)
+    }
+  
+
+    [void] SetSceneItemEnabled($sceneName, $itemId, $enabled) {
+        $payload = @{
+            sceneName        = $sceneName
+            sceneItemId      = $itemId
+            sceneItemEnabled = $enabled
+        }
+        $this.Call("SetSceneItemEnabled", $payload)
+    }
+
+    [object] GetSceneItemLocked($sceneName, $itemId) {
+        $payload = @{ 
+            sceneName   = $sceneName
+            sceneItemId = $itemId 
+        }
+        return $this.Call("GetSceneItemLocked", $payload)
+    }
+  
+
+    [void] SetSceneItemLocked($sceneName, $itemId, $locked) {
+        $payload = @{
+            sceneName       = $sceneName
+            sceneItemId     = $itemId
+            sceneItemLocked = $locked
+        }
+        $this.Call("SetSceneItemLocked", $payload)
+    }
+
+    [object] GetSceneItemIndex($sceneName, $itemId) {
+        $payload = @{ sceneName = $sceneName, $sceneItemId = $itemId }
+        return $this.Call("GetSceneItemIndex", $payload)
+    }
+  
+
+    [void] SetSceneItemIndex($sceneName, $itemId, $itemIndex) {
+        $payload = @{
+            sceneName       = $sceneName
+            sceneItemId     = $itemId
+            sceneItemLocked = $itemIndex
+        }
+        $this.Call("SetSceneItemIndex", $payload)
+    }
+
+    [object] GetSceneItemBlMode($sceneName, $itemId) {
+        $payload = @{ 
+            sceneName   = $sceneName
+            sceneItemId = $itemId 
+        }
+        return $this.Call("GetSceneItemBlMode", $payload)
+    }
+
+    [void] SetSceneItemBlMode($sceneName, $itemId, $bl) {
+        $payload = @{
+            sceneName       = $sceneName
+            sceneItemId     = $itemId
+            sceneItemBlMode = $bl
+        }
+        $this.Call("SetSceneItemBlMode", $payload)
+    }
+  
+
+    [object] GetVirtualCamStatus() {
+        return $this.Call("GetVirtualCamStatus")
+    }
+  
+
+    [object] ToggleVirtualCam() {
+        return $this.Call("ToggleVirtualCam")
+    }
+
+    [void] StartVirtualCam() {
+        $this.Call("StartVirtualCam")
+    }
+  
+
+    [void] StopVirtualCam() {
+        $this.Call("StopVirtualCam")
+    }
+
+    [object] GetReplayBufferStatus() {
+        return $this.Call("GetReplayBufferStatus")
+    }
+
+    [object] ToggleReplayBuffer() {
+        return $this.Call("ToggleReplayBuffer")
+    }
+
+    [void] StartReplayBuffer() {
+        $this.Call("StartReplayBuffer")
+    }
+
+    [void] StopReplayBuffer() {
+        $this.Call("StopReplayBuffer")
+    }
+
+    [void] SaveReplayBuffer() {
+        $this.Call("SaveReplayBuffer")
+    }
+
+    [object] GetLastReplayBufferReplay() {
+        return $this.Call("GetLastReplayBufferReplay")
+    }
+  
+
+    [object] GetOutputList() {
+        return $this.Call("GetOutputList")
+    }
+  
+
+    [object] GetOutputStatus($name) {
+        $payload = @{ outputName = $name }
+        return $this.Call("GetOutputStatus", $payload)
+    }
+  
+
+    [object] ToggleOutput($name) {
+        $payload = @{ outputName = $name }
+        return $this.Call("ToggleOutput", $payload)
+    }
+  
+
+    [void] StartOutput($name) {
+        $payload = @{ outputName = $name }
+        $this.Call("StartOutput", $payload)
+    }
+
+    [void] StopOutput($name) {
+        $payload = @{ outputName = $name }
+        $this.Call("StopOutput", $payload)
+    }
+
+    [object] GetOutputSettings($name) {
+        $payload = @{ outputName = $name }
+        return $this.Call("GetOutputSettings", $payload)
+    }
+  
+
+    [void] SetOutputSettings($name, $settings) {
+        $payload = @{ 
+            outputName     = $name
+            outputSettings = $settings 
+        }
+        $this.Call("SetOutputSettings", $payload)
+    }
+
+    [object] GetStreamStatus() {
+        return $this.Call("GetStreamStatus")
+    }
+
+    [object] ToggleStream() {
+        return $this.Call("ToggleStream")
+    }
+  
+
+    [void] StartStream() {
+        $this.Call("StartStream")
+    }
+
+    [void] StopStream() {
+        $this.Call("StopStream")
+    }
+
+    [void] SStreamCaption($caption) {
+        $this.Call("SStreamCaption")
+    }
+
+    [object] GetRecordStatus() {
+        return $this.Call("GetRecordStatus")
+    }
+  
+
+    [void] ToggleRecord() {
+        $this.Call("ToggleRecord")
+    }
+
+    [void] StartRecord() {
+        $this.Call("StartRecord")
+    }
+
+    [object] StopRecord() {
+        return $this.Call("StopRecord")
+    }
+  
+
+    [void] ToggleRecordPause() {
+        $this.Call("ToggleRecordPause")
+    }
+
+    [void] PauseRecord() {
+        $this.Call("PauseRecord")
+    } 
+
+    [void] ResumeRecord() {
+        $this.Call("ResumeRecord")
+    }
+
+    [object] GetMediaInputStatus($name) {
+        $payload = @{ inputName = $name }
+        return $this.Call("GetMediaInputStatus", $payload)
+    }
+  
+
+    [void] SetMediaInputCursor($name, $cursor) {
+        $payload = @{ inputName = $name, $mediaCursor = $cursor }
+        $this.Call("SetMediaInputCursor", $payload)
+    }
+
+    [void] OffsetMediaInputCursor($name, $offset) {
+        $payload = @{ 
+            inputName         = $name
+            mediaCursorOffset = $offset 
+        }
+        $this.Call("OffsetMediaInputCursor", $payload)
+    }
+
+    [void] TriggerMediaInputAction($name, $action) {
+        $payload = @{ 
+            inputName   = $name
+            mediaAction = $action 
+        }
+        $this.Call("TriggerMediaInputAction", $payload)
+    }
+
+    [object] GetStudioModeEnabled() {
+        return $this.Call("GetStudioModeEnabled")
+    }
+  
+
+    [void] SetStudioModeEnabled($enabled) {
+        $payload = @{ studioModeEnabled = $enabled }
+        $this.Call("SetStudioModeEnabled", $payload)
+    }
+
+    [void] OpenInputPropertiesDialog($name) {
+        $payload = @{ inputName = $name }
+        $this.Call("OpenInputPropertiesDialog", $payload)
+    }
+
+    [void] OpenInputFiltersDialog($name) {
+        $payload = @{ inputName = $name }
+        $this.Call("OpenInputFiltersDialog", $payload)
+    }
+
+    [void] OpenInputInteractDialog($name) {
+        $payload = @{ inputName = $name }
+        $this.Call("OpenInputInteractDialog", $payload)
+    }
+
+    [object] GetMonitorList() {
+        return $this.Call("GetMonitorList")
     }
 
     [void] TearDown() {
