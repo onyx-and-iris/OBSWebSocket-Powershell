@@ -18,4 +18,4 @@ First run `Consumer.ps1` this will intiate the Events client and listen for a Cu
 
 Then run `Producer.ps1` to fire off a Custom Event.
 
-Closing OBS will end the script the `Consumer` script.
+Closing OBS will end the `Consumer` script.
